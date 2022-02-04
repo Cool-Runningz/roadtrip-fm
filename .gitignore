@@ -5,5 +5,8 @@ node_modules
 /public/build
 .env
 
+# Tailwind generated stylesheet
+/app/styles
+
 #JetBrains
 .idea
