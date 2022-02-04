@@ -8,7 +8,7 @@ import {
 } from "remix";
 
 export function meta() {
-  return { title: "New Remix App" };
+  return { title: "RoadTrip.FM" };
 }
 
 export default function App() {
@@ -21,7 +21,7 @@ export default function App() {
         <Links />
       </head>
       <body>
-      <h1>RoadTrip.FM 🚗</h1>
+      <h1><a href="/">RoadTrip.FM 🚗</a></h1>
         <Outlet />
         <ScrollRestoration />
         <Scripts />
