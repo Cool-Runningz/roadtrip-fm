@@ -29,7 +29,9 @@ export default function App() {
       <header className="text-center my-8">
       <h1><a href="/">RoadTrip.FM 🚗</a></h1>
       </header>
+      <main role="main">
         <Outlet />
+      </main>
         <ScrollRestoration />
         <Scripts />
         {process.env.NODE_ENV === "development" && <LiveReload />}

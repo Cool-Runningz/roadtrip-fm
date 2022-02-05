@@ -21,6 +21,7 @@ export default function ManualSearchPage() {
       <h3>Manual Station Search</h3>
       <p>This will present the select dropdown with a list of all 50 states</p>
       <SelectInput
+        inputLabel="Choose a state to filter by: "
         onChange={setSelected}
         options={stateOptions}
         value={selected}
