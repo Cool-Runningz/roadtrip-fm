@@ -23,6 +23,7 @@ export default function FindStationsPage() {
     const navigate = useNavigate()
 
     useEffect(() => {
+        //TODO: Potentially shorten this code to use object["property"] syntax
         if (debouncedValue === "gps") navigate("gps")
         if (debouncedValue === "manual") navigate("manual")
     }, [debouncedValue]);
