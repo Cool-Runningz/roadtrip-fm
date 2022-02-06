@@ -45,7 +45,7 @@ export default function SelectInput(props) {
                 <Listbox.Option
                   key={option.id}
                   className={({ active }) =>
-                    `${active ? "text-amber-900 bg-amber-100" : "text-gray-900"}
+                    `${active ? "text-white bg-sky-900" : "text-gray-900"}
                           cursor-default select-none relative py-2 pl-10 pr-4`
                   }
                   value={option}
@@ -62,7 +62,7 @@ export default function SelectInput(props) {
                       {selected ? (
                         <span
                           className={`${
-                            active ? "text-amber-600" : "text-amber-600"
+                            active ? "text-white" : "text-sky-900"
                           }
                                 absolute inset-y-0 left-0 flex items-center pl-3`}
                         >
