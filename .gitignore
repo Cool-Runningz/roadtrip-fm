@@ -1,9 +1,9 @@
 node_modules
 
 /.cache
-/build
+/netlify/functions/server/build
 /public/build
-.env
+/.netlify
 
 # Tailwind generated stylesheet
 /app/styles
