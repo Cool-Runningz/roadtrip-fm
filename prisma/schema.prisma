@@ -57,11 +57,12 @@ model countries {
 }
 
 model florida_stations {
-  Call_sign String @id @db.VarChar(255)
-  Frequency String @db.VarChar(255)
-  City      String @db.VarChar(255)
-  Licensee  String @db.VarChar(255)
-  Genre     String @db.VarChar(255)
+  Call_sign  String @id @db.VarChar(255)
+  Frequency  String @db.VarChar(255)
+  City       String @db.VarChar(255)
+  state_code String @db.VarChar(255)
+  Licensee   String @db.VarChar(255)
+  Genre      String @db.VarChar(255)
 }
 
 model states {
@@ -101,4 +102,31 @@ model us_cities {
 
   @@index([state_id], map: "cities_test_ibfk_1")
   @@index([country_id], map: "cities_test_ibfk_2")
+}
+
+model california_stations {
+  Call_sign  String @id @db.VarChar(255)
+  Frequency  String @db.VarChar(255)
+  City       String @db.VarChar(255)
+  state_code String @db.VarChar(255)
+  Licensee   String @db.VarChar(255)
+  Genre      String @db.VarChar(255)
+}
+
+model georgia_stations {
+  Call_sign  String @id @db.VarChar(255)
+  Frequency  String @db.VarChar(255)
+  City       String @db.VarChar(255)
+  state_code String @db.VarChar(255)
+  Licensee   String @db.VarChar(255)
+  Genre      String @db.VarChar(255)
+}
+
+model stations {
+  Call_sign  String @id @db.VarChar(255)
+  Frequency  String @db.VarChar(255)
+  City       String @db.VarChar(255)
+  state_code String @db.VarChar(255)
+  Licensee   String @db.VarChar(255)
+  Genre      String @db.VarChar(255)
 }

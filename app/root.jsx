@@ -9,7 +9,7 @@ import {
 import styles from "./styles/app.css"
 
 export function links() {
-    return [{ rel: "stylesheet", href: styles }]
+  return [{ rel: "stylesheet", href: styles }]
 }
 
 export function meta() {
@@ -25,13 +25,13 @@ export default function App() {
         <Meta />
         <Links />
       </head>
-      <body  className="flex flex-col items-center justify-center overflow-hidden bg-gradient-to-r from-cyan-400 to-sky-500">
-      <header className="text-center my-8">
-      <h1><a href="/">RoadTrip.FM 🚗</a></h1>
-      </header>
-      <main role="main">
-        <Outlet />
-      </main>
+      <body className="flex flex-col items-center justify-center bg-gradient-to-r from-cyan-400 to-sky-500">
+        <header className="text-center my-8">
+          <h1><a href="/">RoadTrip.FM 🚗</a></h1>
+        </header>
+        <main role="main">
+          <Outlet />
+        </main>
         <ScrollRestoration />
         <Scripts />
         {process.env.NODE_ENV === "development" && <LiveReload />}
