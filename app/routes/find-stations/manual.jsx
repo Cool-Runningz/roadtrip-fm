@@ -1,6 +1,6 @@
 import { useState } from "react";
 import SelectInput from "~/components/SelectInput";
-import states from "../../helpers/states.js";
+import states from "~/utils/database/states.js";
 
 const transformOptions = (statesList) => {
   return statesList.map((state) => {
