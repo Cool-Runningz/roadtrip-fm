@@ -1,11 +1,17 @@
 import { useLoaderData} from "remix";
 
 export const loader = async ({ request }) => {
-    //NOTE1: This is how you would handle getting the search term from the query param
+    //NOTE: This is how you would handle getting the search term from the query param
+    /*TODO: Will need to perform a different query depending on manual vs. GPS search
+    *      - Manual search will pass in `state` and `city` params
+    *      - GPS search will pass in `latitude` and `longitude` params
+    * */
     const url = new URL(request.url)
-    const stateQueryParam = url.searchParams.get("state")
-    console.log("query param: ", stateQueryParam)
-    return {stations: "100.7FM"};
+    const latitude = url.searchParams.get("latitude")
+    const longitude = url.searchParams.get("longitude")
+    console.log("query param - Latitude", latitude)
+    console.log("query param - Longitude", longitude)
+    return {latitude, longitude};
 };
 
 export default function StationsList() {

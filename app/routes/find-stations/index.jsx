@@ -8,7 +8,7 @@ export default function FindStationsPage() {
                <Link to="gps">
                   <div className="px-5 py-4">
                     <p> Use GPS Location</p>
-                    <small className="text-sky-100 italic">Requires permission to access GPS</small>
+                    <small className="text-sky-100 italic">Requires permission to access coordinates</small>
                   </div>
                </Link>
              </div>
