@@ -1,208 +1,208 @@
 const states = [
   {
     name: "Alabama",
-    abbreviation: "AL"
+    code: "AL",
   },
   {
     name: "Alaska",
-    abbreviation: "AK"
+    code: "AK",
   },
   {
     name: "Arizona",
-    abbreviation: "AZ"
+    code: "AZ",
   },
   {
     name: "Arkansas",
-    abbreviation: "AR"
+    code: "AR",
   },
   {
     name: "California",
-    abbreviation: "CA"
+    code: "CA",
   },
   {
     name: "Colorado",
-    abbreviation: "CO"
+    code: "CO",
   },
   {
     name: "Connecticut",
-    abbreviation: "CT"
+    code: "CT",
   },
   {
     name: "Delaware",
-    abbreviation: "DE"
+    code: "DE",
   },
   {
-    name: "Washington, D.C.",
-    abbreviation: "DC"
+    name: "District of Columbia",
+    code: "DC",
   },
   {
     name: "Florida",
-    abbreviation: "FL"
+    code: "FL",
   },
   {
     name: "Georgia",
-    abbreviation: "GA"
+    code: "GA",
   },
   {
     name: "Hawaii",
-    abbreviation: "HI"
+    code: "HI",
   },
   {
     name: "Idaho",
-    abbreviation: "ID"
+    code: "ID",
   },
   {
     name: "Illinois",
-    abbreviation: "IL"
+    code: "IL",
   },
   {
     name: "Indiana",
-    abbreviation: "IN"
+    code: "IN",
   },
   {
     name: "Iowa",
-    abbreviation: "IA"
+    code: "IA",
   },
   {
     name: "Kansas",
-    abbreviation: "KS"
+    code: "KS",
   },
   {
     name: "Kentucky",
-    abbreviation: "KY"
+    code: "KY",
   },
   {
     name: "Louisiana",
-    abbreviation: "LA"
+    code: "LA",
   },
   {
     name: "Maine",
-    abbreviation: "ME"
+    code: "ME",
   },
   {
     name: "Maryland",
-    abbreviation: "MD"
+    code: "MD",
   },
   {
     name: "Massachusetts",
-    abbreviation: "MA"
+    code: "MA",
   },
   {
     name: "Michigan",
-    abbreviation: "MI"
+    code: "MI",
   },
   {
     name: "Minnesota",
-    abbreviation: "MN"
+    code: "MN",
   },
   {
     name: "Mississippi",
-    abbreviation: "MS"
+    code: "MS",
   },
   {
     name: "Missouri",
-    abbreviation: "MO"
+    code: "MO",
   },
   {
     name: "Montana",
-    abbreviation: "MT"
+    code: "MT",
   },
   {
     name: "Nebraska",
-    abbreviation: "NE"
+    code: "NE",
   },
   {
     name: "Nevada",
-    abbreviation: "NV"
+    code: "NV",
   },
   {
     name: "New Hampshire",
-    abbreviation: "NH"
+    code: "NH",
   },
   {
     name: "New Jersey",
-    abbreviation: "NJ"
+    code: "NJ",
   },
   {
     name: "New Mexico",
-    abbreviation: "NM"
+    code: "NM",
   },
   {
     name: "New York",
-    abbreviation: "NY"
+    code: "NY",
   },
   {
     name: "North Carolina",
-    abbreviation: "NC"
+    code: "NC",
   },
   {
     name: "North Dakota",
-    abbreviation: "ND"
+    code: "ND",
   },
   {
     name: "Ohio",
-    abbreviation: "OH"
+    code: "OH",
   },
   {
     name: "Oklahoma",
-    abbreviation: "OK"
+    code: "OK",
   },
   {
     name: "Oregon",
-    abbreviation: "OR"
+    code: "OR",
   },
   {
     name: "Pennsylvania",
-    abbreviation: "PA"
+    code: "PA",
   },
   {
     name: "Rhode Island",
-    abbreviation: "RI"
+    code: "RI",
   },
   {
     name: "South Carolina",
-    abbreviation: "SC"
+    code: "SC",
   },
   {
     name: "South Dakota",
-    abbreviation: "SD"
+    code: "SD",
   },
   {
     name: "Tennessee",
-    abbreviation: "TN"
+    code: "TN",
   },
   {
     name: "Texas",
-    abbreviation: "TX"
+    code: "TX",
   },
   {
     name: "Utah",
-    abbreviation: "UT"
+    code: "UT",
   },
   {
     name: "Vermont",
-    abbreviation: "VT"
+    code: "VT",
   },
   {
     name: "Virginia",
-    abbreviation: "VA"
+    code: "VA",
   },
   {
     name: "Washington",
-    abbreviation: "WA"
+    code: "WA",
   },
   {
     name: "West Virginia",
-    abbreviation: "WV"
+    code: "WV",
   },
   {
     name: "Wisconsin",
-    abbreviation: "WI"
+    code: "WI",
   },
   {
     name: "Wyoming",
-    abbreviation: "WY"
-  }
+    code: "WY",
+  },
 ];
 
 export default states;
