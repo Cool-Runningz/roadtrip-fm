@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "remix";
-import { ArrowCircleRightIcon } from '@heroicons/react/solid'
+import { SearchIcon } from '@heroicons/react/solid'
 
 export default function GPSSearchPage() {
     const [loading, setLoading] = useState(false)
@@ -24,7 +24,7 @@ export default function GPSSearchPage() {
         const errorMsgHandler = (errorMsg) => {
             setLoading(false)
             setErrorMsg(errorMsg.message)
-            setCoordinates({ latitude: null, longitude: null})
+            setCoordinates({ latitude: null, longitude: null })
             console.warn(`ERROR(${errorMsg.code}): ${errorMsg.message}`);
         }
 
@@ -58,15 +58,15 @@ export default function GPSSearchPage() {
             </div>)}
             <p className="prose prose-md">Disclaimer: GPS search requires access to the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Geolocation_API">Geolocation API</a>. Permission will need to be granted in order to determine the location coordinates.
                 Your location is never stored and is purely used to determine stations near you.</p>
-                <button
-                    type="button"
-                    disabled={loading || errorMsg}
-                    onClick={handleClick}
-                    className="disabled:opacity-75 disabled:cursor-not-allowed inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                >
-                    Find Stations
-                    <ArrowCircleRightIcon className="ml-3 -mr-1 h-5 w-5" aria-hidden="true"/>
-                </button>
+            <button
+                type="button"
+                disabled={loading || errorMsg}
+                onClick={handleClick}
+                className="btn"
+            >
+                Find Stations
+                <SearchIcon className="ml-3 -mr-1 h-5 w-5" aria-hidden="true" />
+            </button>
         </div>
     )
 }
