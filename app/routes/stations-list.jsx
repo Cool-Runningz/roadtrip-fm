@@ -1,35 +1,80 @@
-import { useLoaderData} from "remix";
+import { useLoaderData } from "remix";
+import { prisma } from "~/utils/database/db.server";
+
+//Group the list of stations by their mileage radius
+const groupStationsByMileageRadius = (stationsList) => {
+    return stationsList.reduce((acc, currentValue) => {
+        const distanceRounded = Math.floor(currentValue.distance)
+        if (distanceRounded <= 15) {
+            acc["15"].push(currentValue)
+        }
+        else if (distanceRounded > 15 && distanceRounded <= 30) {
+            acc["30"].push(currentValue)
+        }
+        else {
+            acc["50"].push(currentValue)
+        }
+        return acc
+    }, { "15": [], "30": [], "50": [] })
+}
 
 export const loader = async ({ request }) => {
-    //NOTE: This is how you would handle getting the search term from the query param
-    /*TODO: Will need to perform a different query depending on manual vs. GPS search
-    *      - Manual search will pass in `state` and `city` params
-    *      - GPS search will pass in `latitude` and `longitude` params
-    * */
+    //Grab the search params from the URL
     const url = new URL(request.url)
     const latitude = url.searchParams.get("latitude")
     const longitude = url.searchParams.get("longitude")
-    console.log("query param - Latitude", latitude)
-    console.log("query param - Longitude", longitude)
-    return {latitude, longitude};
+    const stationsData = await prisma.$queryRaw`
+      SELECT Call_sign,Frequency,City,stations.state_code,genre, distance FROM ( 
+          SELECT *, ( 
+              ( 
+                  ( 
+                      acos( 
+                          sin(( ${latitude} * pi() / 180)) 
+                      * 
+                          sin(( latitude * pi() / 180)) + cos(( ${latitude} * pi() /180 )) 
+                      * 
+                      cos(( latitude * pi() / 180)) * cos((( ${longitude} - longitude) * pi()/180))) 
+                    ) * 180/pi() 
+              ) * 60 * 1.1515 
+          )  as distance FROM us_cities ) us_cities INNER JOIN stations ON us_cities.name = stations.City WHERE distance <= 50;     
+    `
+    return groupStationsByMileageRadius(stationsData)
 };
 
 export default function StationsList() {
-    const data = useLoaderData()
-    console.log("data: ", data)
+    const stationsData = useLoaderData()
     return (
         <div>
-            <h3>Stations List</h3>
-            <p>This route will display the list of radio stations based on the state selected or
-                the state detected based on the long & latitude determined by the
-                <a href="https://developer.mozilla.org/en-US/docs/Web/API/Navigator/geolocation">navigator.geolocation</a> Web
-                API.</p>
+            <h2>List of Radio Stations within a ~50 mile radius: </h2>
+            <div className="h-full overflow-y-auto w-80" aria-label="List of Radio Stations">
+                {Object.keys(stationsData).map((mileage) => (
+                    <div key={mileage} className="relative">
+                        <div className="z-10 sticky top-0 border-t border-b border-gray-200 bg-gray-50 px-6 py-1 text-sm font-medium text-gray-500">
+                            <h3>📻 &nbsp; Stations within a {mileage} mile radius</h3>
+                        </div>
+                        <ul role="list" className="relative z-0 divide-y divide-gray-200">
+                            {stationsData[mileage].map((station) => (
+                                <li key={station.Call_sign} className="bg-white">
+                                    <div className="relative px-6 py-5 flex items-center space-x-3 hover:bg-gray-50 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500">
+                                        <span className="inline-flex items-center px-2.5 py-0.5 rounded-md text-sm font-medium bg-indigo-100 text-indigo-800">
+                                            {station.Frequency}
+                                        </span>
+                                        <div className="flex-1 min-w-0">
+                                            <a href="#" className="focus:outline-none">
+                                                {/* Extend touch target to entire panel */}
+                                                <span className="absolute inset-0" aria-hidden="true" />
+                                                <p className="text-sm font-medium text-gray-900">{station.genre}</p>
+                                                <p className="text-sm text-gray-500 truncate"> {station.Call_sign} | {station.City}, {station.state_code}</p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                ))}
+            </div>
 
-            <p>The route may have a query param in the format of
-            <code>/stations-list?state=Florida</code> or
-                <br /> <br />
-            <code>/stations-list?state=South+Dakota</code>
-            </p>
         </div>
     )
 }

@@ -25,8 +25,8 @@ export default function App() {
         <Meta />
         <Links />
       </head>
-      <body className="flex flex-col items-center justify-center bg-gradient-to-r from-cyan-400 to-sky-500">
-        <header className="text-center my-8">
+      <body className="flex flex-col items-center justify-center bg-gradient-to-r from-cyan-400 to-sky-500 py-8">
+        <header className="text-center my-4">
           <h1><a href="/">RoadTrip.FM 🚗</a></h1>
         </header>
         <main role="main" className="px-5">
