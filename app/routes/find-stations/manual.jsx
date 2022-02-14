@@ -79,7 +79,7 @@ export default function ManualSearchPage() {
 
   return (
     <div className="flex flex-col justify-between">
-      <h2 className="text-center">Manual Search</h2>
+      <h2>Manual Search</h2>
       <div className="my-8">
         <SelectInput
           inputLabel="Choose a state: "
