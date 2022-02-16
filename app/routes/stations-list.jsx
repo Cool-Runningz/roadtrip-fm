@@ -45,12 +45,12 @@ export default function StationsList() {
     const stationsData = useLoaderData()
     return (
         <div>
-            <h2>List of Radio Stations within a ~50 mile radius: </h2>
-            <div className="h-full overflow-y-auto w-80 md:w-96" aria-label="List of Radio Stations">
+            <h2>Radio Stations within a ~50 mile radius </h2>
+            <div className="h-full overflow-y-auto w-80 md:w-96">
                 {Object.keys(stationsData).map((mileage) => (
                     <div key={mileage} className="relative">
-                        <div className="z-10 sticky top-0 border-t border-b border-gray-200 bg-gray-50 px-6 py-1 text-sm font-medium text-gray-500">
-                            <h3>📻 &nbsp; Stations within a {mileage} mile radius</h3>
+                        <div className="z-10 sticky top-0 bg-sky-900 px-6 py-3 text-sm font-medium text-white">
+                            <h3> Stations within a {mileage} mile radius</h3>
                         </div>
                         <ul role="list" className="relative z-0 divide-y divide-gray-200">
                             {stationsData[mileage].map((station) => (
