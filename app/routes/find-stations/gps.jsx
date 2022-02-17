@@ -6,7 +6,7 @@ import radioTower from "~/images/RadioTower.svg";
 
 const renderErrorMessage = (message) => {
     return (
-        <div className="rounded-md bg-red-50 p-5 mt-12">
+        <div className="rounded-md bg-red-50 p-5 mt-8">
             <div className="flex">
                 <div className="flex-shrink-0">
                     <ExclamationCircleIcon className="icon-small text-red-400" aria-hidden="true" />
@@ -17,7 +17,7 @@ const renderErrorMessage = (message) => {
                         <ul role="list" className="list-disc pl-5 space-y-1">
                             <li className="pb-2">Please ensure that proper permissions have been granted</li>
                             <li className="pb-2">🔄 <Link className="underline" to="." reloadDocument>Retry Search</Link> </li>
-                            <li>Perform a <Link className="underline" to="/find-stations/manual"> manual search.</Link></li>
+                            <li>Perform a <Link className="underline" to="/find-stations/manual"> manual search</Link></li>
                         </ul>
                     </div>
                 </div>
@@ -94,11 +94,13 @@ export default function GPSSearchPage() {
                         {renderErrorMessage(`Unable to determine location: ${errorMsg}`)}
                     </div>
                 )}
-                <Disclosure title="Disclaimer on Location Services">
-                    <p>GPS search leverages the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Geolocation_API"> Geolocation API </a>. Permission will need to be granted in order to determine the location coordinates.
-                        Your location is <strong className="underline decoration-wavy decoration-inherit text-purple-900">never stored</strong> and is purely used to determine radio stations near you.
-                    </p>
-                </Disclosure>
+                <div className="w-80 md:w-96">
+                    <Disclosure title="Disclaimer on GPS Search">
+                        <p>GPS search leverages the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Geolocation_API"> Geolocation API </a>. Permission will need to be granted in order to determine the location coordinates.
+                            Your location is <strong className="underline decoration-wavy decoration-inherit text-purple-900">never stored</strong> and is purely used to determine radio stations near you.
+                        </p>
+                    </Disclosure>
+                </div>
             </div>
         </div>
     )
