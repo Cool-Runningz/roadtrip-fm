@@ -1,5 +1,6 @@
 import { useLoaderData } from "remix";
 import { prisma } from "~/utils/database/db.server";
+import { AdjustmentsIcon } from '@heroicons/react/solid'
 
 //Group the list of stations by their mileage radius
 const groupStationsByMileageRadius = (stationsList) => {
@@ -38,19 +39,20 @@ export const loader = async ({ request }) => {
               ) * 60 * 1.1515 
           )  as distance FROM us_cities ) us_cities INNER JOIN stations ON us_cities.name = stations.City WHERE distance <= 50;     
     `
-    return groupStationsByMileageRadius(stationsData)
+    const fmStations = stationsData.filter(station => station.Frequency.endsWith("FM"))
+    return groupStationsByMileageRadius(fmStations)
 };
 
 export default function StationsList() {
     const stationsData = useLoaderData()
     return (
-        <div>
+        <div className="flex flex-col items-center">
             <h2>Radio Stations within a ~50 mile radius </h2>
             <div className="h-screen80 overflow-y-auto w-80 md:w-96">
                 {Object.keys(stationsData).map((mileage) => (
                     <div key={mileage} className="relative">
                         <div className="z-10 sticky top-0 bg-sky-900 px-6 py-3 text-sm font-medium text-white">
-                            <h3> Stations within a {mileage} mile radius</h3>
+                            <h3 className="inline-flex">{mileage} mile radius <AdjustmentsIcon className="icon-small mx-2" /> ({stationsData[mileage].length} results found)</h3>
                         </div>
                         <ul role="list" className="relative z-0 divide-y divide-gray-200">
                             {stationsData[mileage].map((station) => (
