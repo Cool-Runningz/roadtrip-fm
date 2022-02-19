@@ -9,7 +9,7 @@ const propTypes = {
 
 export default function Disclosure(props) {
     return (
-        <div className="w-full px-4 pt-16">
+        <div className="w-full px-4">
             <div className="w-full max-w-xl p-2 mx-auto bg-white rounded-2xl">
                 <TWDisclosure>
                     {({ open }) => (

@@ -3,7 +3,7 @@ module.exports = {
   theme: {
     extend: {
       animation: {
-        drive: "drive 2s ease-out forwards",
+        drive: "drive 1.5s ease-out forwards",
       },
       keyframes: {
         drive: {

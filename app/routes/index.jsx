@@ -1,5 +1,5 @@
 import { Link } from "remix";
-import carImg from "~/images/car.svg";
+import carImg from "~/images/Car.svg";
 import { MusicNoteIcon } from '@heroicons/react/solid'
 import { ArrowCircleRightIcon } from '@heroicons/react/outline'
 
