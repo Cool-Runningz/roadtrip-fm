@@ -1,7 +1,7 @@
-import { Link } from "remix";
 import carImg from "~/images/Car.svg";
 import { MusicNoteIcon } from '@heroicons/react/solid'
 import { ArrowCircleRightIcon } from '@heroicons/react/outline'
+import StyledLink from "~/components/StyledLink";
 
 export default function Index() {
   return (
@@ -23,16 +23,13 @@ export default function Index() {
         src={carImg}
         alt=""
       />
-      <div className="bg-sky-900 bg-opacity-75 text-white rounded-lg hover:bg-sky-800 mb-8 w-max mt-12">
-        <Link to="/find-stations">
-          <div className="px-4 py-2">
-            <div className="flex items-center">
-              <p>Begin Search</p>
-              <ArrowCircleRightIcon className="ml-3 -mr-1 icon-small" aria-hidden="true" />
-            </div>
-          </div>
-        </Link>
-      </div>
+      <StyledLink
+          primary
+          class="mt-12"
+          label="Begin Search"
+          linkPath="/find-stations"
+          icon={<ArrowCircleRightIcon className="ml-3 -mr-1 icon-small" aria-hidden="true" />}
+      />
     </div>
   );
 }

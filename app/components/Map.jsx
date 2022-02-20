@@ -16,7 +16,7 @@ import('react-leaflet')
     .then((module) => {
         Leaflet = module
     }).catch(error => {
-        console.error("Error getting module")
+        console.error("Error getting module: ", error)
     });
 
 export default function Map(props) {

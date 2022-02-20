@@ -23,4 +23,12 @@
   .flexy-col-center {
     @apply flex flex-col items-center;
   }
+
+  .link-default {
+    @apply bg-sky-900 bg-opacity-75 hover:bg-sky-800 text-white rounded-md;
+  }
+
+  .link-primary {
+    @apply bg-indigo-700 hover:bg-indigo-800 text-white rounded-md;
+  }
 }
