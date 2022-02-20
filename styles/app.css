@@ -19,4 +19,8 @@
   .icon-small {
     @apply h-5 w-5;
   }
+
+  .flexy-col-center {
+    @apply flex flex-col items-center;
+  }
 }
