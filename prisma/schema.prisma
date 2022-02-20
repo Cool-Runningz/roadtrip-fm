@@ -57,12 +57,15 @@ model countries {
 }
 
 model florida_stations {
-  Call_sign  String @id @db.VarChar(255)
-  Frequency  String @db.VarChar(255)
-  City       String @db.VarChar(255)
+  call_sign  String @id @db.VarChar(255)
+  frequency  String @db.VarChar(255)
+  city       String @db.VarChar(255)
   state_code String @db.VarChar(255)
-  Licensee   String @db.VarChar(255)
-  Genre      String @db.VarChar(255)
+  city_id    Int    @db.MediumInt
+  licensee   String @db.VarChar(255)
+  genre      String @db.VarChar(255)
+
+  @@index([city_id], map: "city_id_stations")
 }
 
 model states {
@@ -86,19 +89,18 @@ model states {
 }
 
 model us_cities {
-  id            Int      @id @default(autoincrement()) @db.UnsignedMediumInt
-  name          String   @db.VarChar(255)
-  name_override String?  @db.VarChar(255)
-  state_id      Int      @db.UnsignedMediumInt
-  state_code    String   @db.VarChar(255)
-  country_id    Int      @db.UnsignedMediumInt
-  country_code  String   @db.Char(2)
-  latitude      Decimal  @db.Decimal(10, 8)
-  longitude     Decimal  @db.Decimal(11, 8)
-  created_at    DateTime @default(dbgenerated("'2014-01-01 06:31:01'")) @db.Timestamp(0)
-  updated_at    DateTime @default(now()) @db.Timestamp(0)
-  flag          Boolean  @default(true)
-  wikiDataId    String?  @db.VarChar(255)
+  id           Int      @id @default(autoincrement()) @db.UnsignedMediumInt
+  name         String   @db.VarChar(255)
+  state_id     Int      @db.UnsignedMediumInt
+  state_code   String   @db.VarChar(255)
+  country_id   Int      @db.UnsignedMediumInt
+  country_code String   @db.Char(2)
+  latitude     Decimal  @db.Decimal(10, 8)
+  longitude    Decimal  @db.Decimal(11, 8)
+  created_at   DateTime @default(dbgenerated("'2014-01-01 06:31:01'")) @db.Timestamp(0)
+  updated_at   DateTime @default(now()) @db.Timestamp(0)
+  flag         Boolean  @default(true)
+  wikiDataId   String?  @db.VarChar(255)
 
   @@index([state_id], map: "cities_test_ibfk_1")
   @@index([country_id], map: "cities_test_ibfk_2")
@@ -118,15 +120,581 @@ model georgia_stations {
   Frequency  String @db.VarChar(255)
   City       String @db.VarChar(255)
   state_code String @db.VarChar(255)
+  city_id    Int    @db.MediumInt
   Licensee   String @db.VarChar(255)
   Genre      String @db.VarChar(255)
 }
 
 model stations {
+  call_sign  String @id @db.VarChar(255)
+  frequency  String @db.VarChar(255)
+  city       String @db.VarChar(255)
+  state_code String @db.VarChar(255)
+  city_id    Int    @db.MediumInt
+  licensee   String @db.VarChar(255)
+  genre      String @db.VarChar(255)
+
+  @@index([city_id], map: "city_id_all_stations")
+}
+
+model alabama_stations {
+  Call_sign  String @id @db.VarChar(255)
+  Frequency  String @db.VarChar(255)
+  City       String @db.VarChar(255)
+  state_code String @db.VarChar(255)
+  city_id    Int    @db.MediumInt
+  Licensee   String @db.VarChar(255)
+  Genre      String @db.VarChar(255)
+}
+
+model alaska_stations {
+  call_sign  String @id @db.VarChar(255)
+  frequency  String @db.VarChar(255)
+  city       String @db.VarChar(255)
+  state_code String @db.VarChar(255)
+  city_id    Int    @db.MediumInt
+  licensee   String @db.VarChar(255)
+  genre      String @db.VarChar(255)
+
+  @@index([city_id], map: "city_id_stations")
+}
+
+model arizona_stations {
+  call_sign  String @id @db.VarChar(255)
+  frequency  String @db.VarChar(255)
+  city       String @db.VarChar(255)
+  state_code String @db.VarChar(255)
+  city_id    Int    @db.MediumInt
+  licensee   String @db.VarChar(255)
+  genre      String @db.VarChar(255)
+
+  @@index([city_id], map: "city_id_stations")
+}
+
+model arkansas_stations {
+  Call_sign  String @id @db.VarChar(255)
+  Frequency  String @db.VarChar(255)
+  City       String @db.VarChar(255)
+  state_code String @db.VarChar(255)
+  city_id    Int    @db.MediumInt
+  Licensee   String @db.VarChar(255)
+  Genre      String @db.VarChar(255)
+}
+
+model colorado_stations {
+  call_sign  String @id @db.VarChar(255)
+  frequency  String @db.VarChar(255)
+  city       String @db.VarChar(255)
+  state_code String @db.VarChar(255)
+  city_id    Int    @db.MediumInt
+  licensee   String @db.VarChar(255)
+  genre      String @db.VarChar(255)
+
+  @@index([city_id], map: "city_id_stations")
+}
+
+model connecticut_stations {
+  call_sign  String @id @db.VarChar(255)
+  frequency  String @db.VarChar(255)
+  city       String @db.VarChar(255)
+  state_code String @db.VarChar(255)
+  city_id    Int    @db.MediumInt
+  licensee   String @db.VarChar(255)
+  genre      String @db.VarChar(255)
+
+  @@index([city_id], map: "city_id_stations")
+}
+
+model delaware_stations {
+  call_sign  String @id @db.VarChar(255)
+  frequency  String @db.VarChar(255)
+  city       String @db.VarChar(255)
+  state_code String @db.VarChar(255)
+  city_id    Int    @db.MediumInt
+  licensee   String @db.VarChar(255)
+  genre      String @db.VarChar(255)
+
+  @@index([city_id], map: "city_id_stations")
+}
+
+model hawaii_stations {
+  call_sign  String @id @db.VarChar(255)
+  frequency  String @db.VarChar(255)
+  city       String @db.VarChar(255)
+  state_code String @db.VarChar(255)
+  city_id    Int    @db.MediumInt
+  licensee   String @db.VarChar(255)
+  genre      String @db.VarChar(255)
+
+  @@index([city_id], map: "city_id_stations")
+}
+
+model idaho_stations {
+  call_sign  String @id @db.VarChar(255)
+  frequency  String @db.VarChar(255)
+  city       String @db.VarChar(255)
+  state_code String @db.VarChar(255)
+  city_id    Int    @db.MediumInt
+  licensee   String @db.VarChar(255)
+  genre      String @db.VarChar(255)
+
+  @@index([city_id], map: "city_id_stations")
+}
+
+model illinois_stations {
+  call_sign  String @id @db.VarChar(255)
+  frequency  String @db.VarChar(255)
+  city       String @db.VarChar(255)
+  state_code String @db.VarChar(255)
+  city_id    Int    @db.MediumInt
+  licensee   String @db.VarChar(255)
+  genre      String @db.VarChar(255)
+
+  @@index([city_id], map: "city_id_stations")
+}
+
+model indiana_stations {
+  call_sign  String @id @db.VarChar(255)
+  frequency  String @db.VarChar(255)
+  city       String @db.VarChar(255)
+  state_code String @db.VarChar(255)
+  city_id    Int    @db.MediumInt
+  licensee   String @db.VarChar(255)
+  genre      String @db.VarChar(255)
+
+  @@index([city_id], map: "city_id_stations")
+}
+
+model iowa_stations {
+  Call_sign  String @id @db.VarChar(255)
+  Frequency  String @db.VarChar(255)
+  City       String @db.VarChar(255)
+  state_code String @db.VarChar(255)
+  city_id    Int    @db.MediumInt
+  Licensee   String @db.VarChar(255)
+  Genre      String @db.VarChar(255)
+}
+
+model kansas_stations {
+  call_sign  String @id @db.VarChar(255)
+  frequency  String @db.VarChar(255)
+  city       String @db.VarChar(255)
+  state_code String @db.VarChar(255)
+  city_id    Int    @db.MediumInt
+  licensee   String @db.VarChar(255)
+  genre      String @db.VarChar(255)
+
+  @@index([city_id], map: "city_id_stations")
+}
+
+model kentucky_stations {
+  Call_sign  String @id @db.VarChar(255)
+  Frequency  String @db.VarChar(255)
+  City       String @db.VarChar(255)
+  state_code String @db.VarChar(255)
+  city_id    Int    @db.MediumInt
+  Licensee   String @db.VarChar(255)
+  Genre      String @db.VarChar(255)
+}
+
+model louisiana_stations {
+  Call_sign  String @id @db.VarChar(255)
+  Frequency  String @db.VarChar(255)
+  City       String @db.VarChar(255)
+  state_code String @db.VarChar(255)
+  city_id    Int    @db.MediumInt
+  Licensee   String @db.VarChar(255)
+  Genre      String @db.VarChar(255)
+}
+
+model maine_stations {
+  call_sign  String @id @db.VarChar(255)
+  frequency  String @db.VarChar(255)
+  city       String @db.VarChar(255)
+  state_code String @db.VarChar(255)
+  city_id    Int    @db.MediumInt
+  licensee   String @db.VarChar(255)
+  genre      String @db.VarChar(255)
+
+  @@index([city_id], map: "city_id_stations")
+}
+
+model maryland_stations {
+  Call_sign  String @id @db.VarChar(255)
+  Frequency  String @db.VarChar(255)
+  City       String @db.VarChar(255)
+  state_code String @db.VarChar(255)
+  city_id    Int    @db.MediumInt
+  Licensee   String @db.VarChar(255)
+  Genre      String @db.VarChar(255)
+}
+
+model massachusetts_stations {
+  call_sign  String @id @db.VarChar(255)
+  frequency  String @db.VarChar(255)
+  city       String @db.VarChar(255)
+  state_code String @db.VarChar(255)
+  city_id    Int    @db.MediumInt
+  licensee   String @db.VarChar(255)
+  genre      String @db.VarChar(255)
+
+  @@index([city_id], map: "city_id_stations")
+}
+
+model michigan_stations {
+  call_sign  String @id @db.VarChar(255)
+  frequency  String @db.VarChar(255)
+  city       String @db.VarChar(255)
+  state_code String @db.VarChar(255)
+  city_id    Int    @db.MediumInt
+  licensee   String @db.VarChar(255)
+  genre      String @db.VarChar(255)
+
+  @@index([city_id], map: "city_id_stations")
+}
+
+model minnesota_stations {
+  Call_sign  String @id @db.VarChar(255)
+  Frequency  String @db.VarChar(255)
+  City       String @db.VarChar(255)
+  state_code String @db.VarChar(255)
+  city_id    Int    @db.MediumInt
+  Licensee   String @db.VarChar(255)
+  Genre      String @db.VarChar(255)
+}
+
+model mississippi_stations {
+  Call_sign  String @id @db.VarChar(255)
+  Frequency  String @db.VarChar(255)
+  City       String @db.VarChar(255)
+  state_code String @db.VarChar(255)
+  city_id    Int    @db.MediumInt
+  Licensee   String @db.VarChar(255)
+  Genre      String @db.VarChar(255)
+}
+
+model missouri_stations {
+  Call_sign  String @id @db.VarChar(255)
+  Frequency  String @db.VarChar(255)
+  City       String @db.VarChar(255)
+  state_code String @db.VarChar(255)
+  city_id    Int    @db.MediumInt
+  Licensee   String @db.VarChar(255)
+  Genre      String @db.VarChar(255)
+}
+
+model montana_stations {
+  Call_sign  String @id @db.VarChar(255)
+  Frequency  String @db.VarChar(255)
+  City       String @db.VarChar(255)
+  state_code String @db.VarChar(255)
+  city_id    Int    @db.MediumInt
+  Licensee   String @db.VarChar(255)
+  Genre      String @db.VarChar(255)
+}
+
+model nebraska_stations {
+  call_sign  String @id @db.VarChar(255)
+  frequency  String @db.VarChar(255)
+  city       String @db.VarChar(255)
+  state_code String @db.VarChar(255)
+  city_id    Int    @db.MediumInt
+  licensee   String @db.VarChar(255)
+  genre      String @db.VarChar(255)
+
+  @@index([city_id], map: "city_id_stations")
+}
+
+model nevada_stations {
+  call_sign  String @id @db.VarChar(255)
+  frequency  String @db.VarChar(255)
+  city       String @db.VarChar(255)
+  state_code String @db.VarChar(255)
+  city_id    Int    @db.MediumInt
+  licensee   String @db.VarChar(255)
+  genre      String @db.VarChar(255)
+
+  @@index([city_id], map: "city_id_stations")
+}
+
+model newhampshire_stations {
+  call_sign  String @id @db.VarChar(255)
+  frequency  String @db.VarChar(255)
+  city       String @db.VarChar(255)
+  state_code String @db.VarChar(255)
+  city_id    Int    @db.MediumInt
+  licensee   String @db.VarChar(255)
+  genre      String @db.VarChar(255)
+
+  @@index([city_id], map: "city_id_stations")
+}
+
+model newjersey_stations {
+  call_sign  String @id @db.VarChar(255)
+  frequency  String @db.VarChar(255)
+  city       String @db.VarChar(255)
+  state_code String @db.VarChar(255)
+  city_id    Int    @db.MediumInt
+  licensee   String @db.VarChar(255)
+  genre      String @db.VarChar(255)
+
+  @@index([city_id], map: "city_id_stations")
+}
+
+model newmexico_stations {
+  call_sign  String @id @db.VarChar(255)
+  frequency  String @db.VarChar(255)
+  city       String @db.VarChar(255)
+  state_code String @db.VarChar(255)
+  city_id    Int    @db.MediumInt
+  licensee   String @db.VarChar(255)
+  genre      String @db.VarChar(255)
+
+  @@index([city_id], map: "city_id_stations")
+}
+
+model newyork_stations {
+  call_sign  String @id @db.VarChar(255)
+  frequency  String @db.VarChar(255)
+  city       String @db.VarChar(255)
+  state_code String @db.VarChar(255)
+  city_id    Int    @db.MediumInt
+  licensee   String @db.VarChar(255)
+  genre      String @db.VarChar(255)
+
+  @@index([city_id], map: "city_id_stations")
+}
+
+model northcarolina_stations {
+  Call_sign  String @id @db.VarChar(255)
+  Frequency  String @db.VarChar(255)
+  City       String @db.VarChar(255)
+  state_code String @db.VarChar(255)
+  city_id    Int    @db.MediumInt
+  Licensee   String @db.VarChar(255)
+  Genre      String @db.VarChar(255)
+}
+
+model northdakota_stations {
+  call_sign  String @id @db.VarChar(255)
+  frequency  String @db.VarChar(255)
+  city       String @db.VarChar(255)
+  state_code String @db.VarChar(255)
+  city_id    Int    @db.MediumInt
+  licensee   String @db.VarChar(255)
+  genre      String @db.VarChar(255)
+
+  @@index([city_id], map: "city_id_stations")
+}
+
+model ohio_stations {
+  call_sign  String @id @db.VarChar(255)
+  frequency  String @db.VarChar(255)
+  city       String @db.VarChar(255)
+  state_code String @db.VarChar(255)
+  city_id    Int    @db.MediumInt
+  licensee   String @db.VarChar(255)
+  genre      String @db.VarChar(255)
+
+  @@index([city_id], map: "city_id_stations")
+}
+
+model oklahoma_stations {
+  call_sign  String @id @db.VarChar(255)
+  frequency  String @db.VarChar(255)
+  city       String @db.VarChar(255)
+  state_code String @db.VarChar(255)
+  city_id    Int    @db.MediumInt
+  licensee   String @db.VarChar(255)
+  genre      String @db.VarChar(255)
+
+  @@index([city_id], map: "city_id_stations")
+}
+
+model oregon_stations {
+  call_sign  String @id @db.VarChar(255)
+  frequency  String @db.VarChar(255)
+  city       String @db.VarChar(255)
+  state_code String @db.VarChar(255)
+  city_id    Int    @db.MediumInt
+  licensee   String @db.VarChar(255)
+  genre      String @db.VarChar(255)
+
+  @@index([city_id], map: "city_id_stations")
+}
+
+model pennsylvania_stations {
+  call_sign  String @id @db.VarChar(255)
+  frequency  String @db.VarChar(255)
+  city       String @db.VarChar(255)
+  state_code String @db.VarChar(255)
+  city_id    Int    @db.MediumInt
+  licensee   String @db.VarChar(255)
+  genre      String @db.VarChar(255)
+
+  @@index([city_id], map: "city_id_stations")
+}
+
+model rhodeisland_stations {
+  call_sign  String @id @db.VarChar(255)
+  frequency  String @db.VarChar(255)
+  city       String @db.VarChar(255)
+  state_code String @db.VarChar(255)
+  city_id    Int    @db.MediumInt
+  licensee   String @db.VarChar(255)
+  genre      String @db.VarChar(255)
+
+  @@index([city_id], map: "city_id_stations")
+}
+
+model southcarolina_stations {
+  Call_sign  String @id @db.VarChar(255)
+  Frequency  String @db.VarChar(255)
+  City       String @db.VarChar(255)
+  state_code String @db.VarChar(255)
+  city_id    Int    @db.MediumInt
+  Licensee   String @db.VarChar(255)
+  Genre      String @db.VarChar(255)
+}
+
+model southdakota_stations {
+  call_sign  String @id @db.VarChar(255)
+  frequency  String @db.VarChar(255)
+  city       String @db.VarChar(255)
+  state_code String @db.VarChar(255)
+  city_id    Int    @db.MediumInt
+  licensee   String @db.VarChar(255)
+  genre      String @db.VarChar(255)
+
+  @@index([city_id], map: "city_id_stations")
+}
+
+model stations_backup_2_19 {
   Call_sign  String @id @db.VarChar(255)
   Frequency  String @db.VarChar(255)
   City       String @db.VarChar(255)
   state_code String @db.VarChar(255)
   Licensee   String @db.VarChar(255)
   Genre      String @db.VarChar(255)
+
+  @@map("stations_backup-2-19")
+}
+
+model tennessee_stations {
+  Call_sign  String @id @db.VarChar(255)
+  Frequency  String @db.VarChar(255)
+  City       String @db.VarChar(255)
+  state_code String @db.VarChar(255)
+  city_id    Int    @db.MediumInt
+  Licensee   String @db.VarChar(255)
+  Genre      String @db.VarChar(255)
+}
+
+model texas_stations {
+  call_sign  String @id @db.VarChar(255)
+  frequency  String @db.VarChar(255)
+  city       String @db.VarChar(255)
+  state_code String @db.VarChar(255)
+  city_id    Int    @db.MediumInt
+  licensee   String @db.VarChar(255)
+  genre      String @db.VarChar(255)
+
+  @@index([city_id], map: "city_id_stations")
+}
+
+model us_cities_backup_2_19 {
+  id           Int      @id @default(autoincrement()) @db.UnsignedMediumInt
+  name         String   @db.VarChar(255)
+  state_id     Int      @db.UnsignedMediumInt
+  state_code   String   @db.VarChar(255)
+  country_id   Int      @db.UnsignedMediumInt
+  country_code String   @db.Char(2)
+  latitude     Decimal  @db.Decimal(10, 8)
+  longitude    Decimal  @db.Decimal(11, 8)
+  created_at   DateTime @default(dbgenerated("'2014-01-01 06:31:01'")) @db.Timestamp(0)
+  updated_at   DateTime @default(now()) @db.Timestamp(0)
+  flag         Boolean  @default(true)
+  wikiDataId   String?  @db.VarChar(255)
+
+  @@index([state_id], map: "cities_test_ibfk_1")
+  @@index([country_id], map: "cities_test_ibfk_2")
+  @@map("us_cities_backup-2-19")
+}
+
+model utah_stations {
+  call_sign  String @id @db.VarChar(255)
+  frequency  String @db.VarChar(255)
+  city       String @db.VarChar(255)
+  state_code String @db.VarChar(255)
+  city_id    Int    @db.MediumInt
+  licensee   String @db.VarChar(255)
+  genre      String @db.VarChar(255)
+
+  @@index([city_id], map: "city_id_stations")
+}
+
+model vermont_stations {
+  call_sign  String @id @db.VarChar(255)
+  frequency  String @db.VarChar(255)
+  city       String @db.VarChar(255)
+  state_code String @db.VarChar(255)
+  city_id    Int    @db.MediumInt
+  licensee   String @db.VarChar(255)
+  genre      String @db.VarChar(255)
+
+  @@index([city_id], map: "city_id_stations")
+}
+
+model virginia_stations {
+  Call_sign  String @id @db.VarChar(255)
+  Frequency  String @db.VarChar(255)
+  City       String @db.VarChar(255)
+  state_code String @db.VarChar(255)
+  city_id    Int    @db.MediumInt
+  Licensee   String @db.VarChar(255)
+  Genre      String @db.VarChar(255)
+}
+
+model washington_stations {
+  call_sign  String @id @db.VarChar(255)
+  frequency  String @db.VarChar(255)
+  city       String @db.VarChar(255)
+  state_code String @db.VarChar(255)
+  city_id    Int    @db.MediumInt
+  licensee   String @db.VarChar(255)
+  genre      String @db.VarChar(255)
+
+  @@index([city_id], map: "city_id_stations")
+}
+
+model westvirginia_stations {
+  Call_sign  String @id @db.VarChar(255)
+  Frequency  String @db.VarChar(255)
+  City       String @db.VarChar(255)
+  state_code String @db.VarChar(255)
+  city_id    Int    @db.MediumInt
+  Licensee   String @db.VarChar(255)
+  Genre      String @db.VarChar(255)
+}
+
+model wisconsin_stations {
+  Call_sign  String @id @db.VarChar(255)
+  Frequency  String @db.VarChar(255)
+  City       String @db.VarChar(255)
+  state_code String @db.VarChar(255)
+  city_id    Int    @db.MediumInt
+  Licensee   String @db.VarChar(255)
+  Genre      String @db.VarChar(255)
+}
+
+model wyoming_stations {
+  call_sign  String @id @db.VarChar(255)
+  frequency  String @db.VarChar(255)
+  city       String @db.VarChar(255)
+  state_code String @db.VarChar(255)
+  city_id    Int    @db.MediumInt
+  licensee   String @db.VarChar(255)
+  genre      String @db.VarChar(255)
+
+  @@index([city_id], map: "city_id_stations")
 }

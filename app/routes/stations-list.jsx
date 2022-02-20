@@ -25,8 +25,9 @@ export const loader = async ({ request }) => {
     const latitude = url.searchParams.get("latitude")
     const longitude = url.searchParams.get("longitude")
     const stationsData = await prisma.$queryRaw`
-      SELECT Call_sign,Frequency,City,stations.state_code,genre, distance FROM ( 
-          SELECT *, ( 
+      SELECT stations.call_sign,stations.frequency, stations.city, stations.state_code, concat(stations.city, ' ', stations.state_code) AS city_state,stations.genre,us_cities.latitude,us_cities.longitude,us_cities.id,distance FROM ( 
+          SELECT *, 
+          ( 
               ( 
                   ( 
                       acos( 
@@ -37,9 +38,9 @@ export const loader = async ({ request }) => {
                       cos(( latitude * pi() / 180)) * cos((( ${longitude} - longitude) * pi()/180))) 
                     ) * 180/pi() 
               ) * 60 * 1.1515 
-          )  as distance FROM us_cities ) us_cities INNER JOIN stations ON us_cities.name = stations.City WHERE distance <= 50;     
+          )  as distance FROM us_cities ) us_cities INNER JOIN stations ON concat(us_cities.name, ' ', us_cities.state_code) = concat(stations.city, ' ', stations.state_code) WHERE distance <= 50;     
     `
-    const fmStations = stationsData.filter(station => station.Frequency.endsWith("FM"))
+    const fmStations = stationsData.filter(station => station.frequency.endsWith("FM"))
     return groupStationsByMileageRadius(fmStations)
 };
 
@@ -56,17 +57,17 @@ export default function StationsList() {
                         </div>
                         <ul role="list" className="relative z-0 divide-y divide-gray-200">
                             {stationsData[mileage].map((station) => (
-                                <li key={station.Call_sign} className="bg-white">
+                                <li key={station.call_sign} className="bg-white">
                                     <div className="relative px-6 py-5 flex items-center space-x-3 hover:bg-gray-50 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500">
                                         <span className="inline-flex items-center px-2.5 py-0.5 rounded-md text-sm font-medium bg-indigo-100 text-indigo-800">
-                                            {station.Frequency}
+                                            {station.frequency}
                                         </span>
                                         <div className="flex-1 min-w-0">
                                             <a href="#" className="focus:outline-none">
                                                 {/* Extend touch target to entire panel */}
                                                 <span className="absolute inset-0" aria-hidden="true" />
                                                 <p className="text-sm font-medium text-gray-900">{station.genre}</p>
-                                                <p className="text-sm text-gray-500 truncate"> {station.Call_sign} | {station.City}, {station.state_code}</p>
+                                                <p className="text-sm text-gray-500 truncate"> {station.call_sign} | {station.city}, {station.state_code}</p>
                                             </a>
                                         </div>
                                     </div>
