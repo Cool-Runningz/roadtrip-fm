@@ -19,6 +19,12 @@ const groupStationsByMileageRadius = (stationsList) => {
     }, { "15": [], "30": [], "50": [] })
 }
 
+//Parse out the frequency number since it's stored as a string with the call_sign + FM format
+const parseFrequencyNumber = station => Number(station.frequency.split(" ")[0])
+
+//Sort stations by ascending frequency
+const sortByFrequencyNumber = (a, b) => parseFrequencyNumber(a) - parseFrequencyNumber(b)
+
 export const loader = async ({ request }) => {
     //Grab the search params from the URL
     const url = new URL(request.url)
@@ -40,7 +46,7 @@ export const loader = async ({ request }) => {
               ) * 60 * 1.1515 
           )  as distance FROM us_cities ) us_cities INNER JOIN stations ON concat(us_cities.name, ' ', us_cities.state_code) = concat(stations.city, ' ', stations.state_code) WHERE distance <= 50;     
     `
-    const fmStations = stationsData.filter(station => station.frequency.endsWith("FM"))
+    const fmStations = stationsData.sort(sortByFrequencyNumber).filter(station => station.frequency.endsWith("FM"))
     return groupStationsByMileageRadius(fmStations)
 };
 
