@@ -36,14 +36,12 @@ const renderErrorMessage = (message) => {
 }
 
 export default function GPSSearchPage() {
-    const [loading, setLoading] = useState(false)
+    const [loading, setLoading] = useState(true)
     const [coordinates, setCoordinates] = useState({ latitude: null, longitude: null })
     const [errorMsg, setErrorMsg] = useState("")
     const navigate = useNavigate();
 
     useEffect(() => {
-        setLoading(true)
-
         const options = {
             enableHighAccuracy: true,
             timeout: 5000,
@@ -82,8 +80,8 @@ export default function GPSSearchPage() {
                 <div className="flexy-col-center">
                     {loading && (
                         <>
-                            <img src={radioTower} alt="" className="animate-pulse w-44" />
-                            <p className="font-bold my-8 text-lg">Searching for coordinates ...</p>
+                            <img src={radioTower} alt="radio tower" className="animate-pulse w-44" />
+                            <p className="font-bold my-8 text-lg text-center">Searching for coordinates ...</p>
                         </>
                     )}
                     {!loading && coordinates.latitude && (

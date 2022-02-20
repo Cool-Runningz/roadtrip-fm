@@ -1,4 +1,6 @@
 import PropTypes from "prop-types"
+import {useEffect, useState} from "react";
+import radioTower from "~/images/RadioTower.svg";
 
 const propTypes = {
     coordinates: PropTypes.shape({
@@ -8,19 +10,34 @@ const propTypes = {
 }
 
 const RADIUS_IN_METERS = 80467 //50 miles converted to meters for the Leaflet API
-let Leaflet = null
-
-//Dynamically import the leaflet module since it's dependent on the browsers 
-//window object and needs to be served client-side.
-import('react-leaflet')
-    .then((module) => {
-        Leaflet = module
-    }).catch(error => {
-        console.error("Error getting module: ", error)
-    });
 
 export default function Map(props) {
     const { latitude, longitude } = props.coordinates
+    const [Leaflet, setLeaflet] = useState(null)
+    const [loading, setLoading] = useState(true)
+
+    useEffect(() => {
+        /* Dynamically import the leaflet module since it's dependent on the browsers window object
+            and needs to be served client-side.
+         */
+        import('react-leaflet')
+            .then((module) => {
+                setLeaflet(module)
+                setLoading(false)
+            }).catch(error => {
+            setLoading(false)
+            console.error("Error getting module: ", error)
+        });
+    }, []);
+
+    if(loading){
+        return (
+            <div>
+                <img src={radioTower} alt="radio tower" className="animate-pulse w-44" />
+                <p className="font-bold my-8 text-lg text-center"> Loading Map...</p>
+            </div>
+        )
+    }
 
     return (
         <div>
