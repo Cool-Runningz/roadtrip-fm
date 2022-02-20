@@ -79,37 +79,38 @@ export default function GPSSearchPage() {
     return (
         <div className="max-w-md mx-auto px-4 sm:px-6 lg:px-8 mt-8">
             <div className="max-w-sm mx-auto">
-                {loading && (
-                    <div className="flex flex-col items-center">
-                        <img src={radioTower} alt="" className="animate-pulse w-44" />
-                        <p className="font-bold my-8 text-lg">Searching for coordinates ...</p>
+                <div className="flexy-col-center">
+                    {loading && (
+                        <>
+                            <img src={radioTower} alt="" className="animate-pulse w-44" />
+                            <p className="font-bold my-8 text-lg">Searching for coordinates ...</p>
+                        </>
+                    )}
+                    {!loading && coordinates.latitude && (
+                        <>
+                            <Map coordinates={coordinates} />
+                            <button
+                                type="button"
+                                disabled={loading || errorMsg}
+                                onClick={handleClick}
+                                className="btn mt-12"
+                            >
+                                Find Stations
+                                <SearchIcon className="ml-3 -mr-1 icon-small" aria-hidden="true" />
+                            </button></>
+                    )}
+                    {!loading && errorMsg && (
+                        <div className="flex justify-center">
+                            {renderErrorMessage(`Unable to determine location: ${errorMsg}`)}
+                        </div>
+                    )}
+                    <div className="w-80 md:w-96 mt-20">
+                        <Disclosure title="Disclaimer on GPS Search">
+                            <p>GPS search leverages the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Geolocation_API"> Geolocation API </a>. Permission will need to be granted in order to determine the location coordinates.
+                                Your location is <strong className="underline decoration-wavy decoration-inherit text-purple-900">never stored</strong> and is purely used to determine radio stations near you.
+                            </p>
+                        </Disclosure>
                     </div>
-                )}
-                {!loading && coordinates.latitude && (
-                    <div className="flexy-col-center">
-                        <Map coordinates={coordinates} />
-                        <button
-                            type="button"
-                            disabled={loading || errorMsg}
-                            onClick={handleClick}
-                            className="btn mt-12"
-                        >
-                            Find Stations
-                            <SearchIcon className="ml-3 -mr-1 icon-small" aria-hidden="true" />
-                        </button>
-                    </div>
-                )}
-                {!loading && errorMsg && (
-                    <div className="flex justify-center">
-                        {renderErrorMessage(`Unable to determine location: ${errorMsg}`)}
-                    </div>
-                )}
-                <div className="w-80 md:w-96 mt-20">
-                    <Disclosure title="Disclaimer on GPS Search">
-                        <p>GPS search leverages the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Geolocation_API"> Geolocation API </a>. Permission will need to be granted in order to determine the location coordinates.
-                            Your location is <strong className="underline decoration-wavy decoration-inherit text-purple-900">never stored</strong> and is purely used to determine radio stations near you.
-                        </p>
-                    </Disclosure>
                 </div>
             </div>
         </div>

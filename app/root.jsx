@@ -45,6 +45,7 @@ export default function App() {
         <ScrollRestoration />
         <Scripts />
         {process.env.NODE_ENV === "development" && <LiveReload />}
+        {process.env.NODE_ENV === "production" && <script defer data-domain="roadtripfm.live" src="https://plausible.io/js/plausible.js"></script>}
       </body>
     </html>
   );
