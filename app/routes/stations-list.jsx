@@ -2,6 +2,12 @@ import { useLoaderData } from "remix";
 import { prisma } from "~/utils/database/db.server";
 import { AdjustmentsIcon } from '@heroicons/react/solid'
 
+export const meta = () => {
+    return {
+        title: "RoadTrip.FM | Stations List"
+    };
+};
+
 //Group the list of stations by their mileage radius
 const groupStationsByMileageRadius = (stationsList) => {
     return stationsList.reduce((acc, currentValue) => {

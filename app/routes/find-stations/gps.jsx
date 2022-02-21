@@ -13,6 +13,12 @@ export function links() {
     }]
 }
 
+export const meta = () => {
+    return {
+        title: "RoadTrip.FM | GPS Search"
+    };
+};
+
 const renderErrorMessage = (message) => {
     return (
         <div className="rounded-md bg-red-50 p-5 mt-8">

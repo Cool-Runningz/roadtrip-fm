@@ -6,24 +6,11 @@ import { SearchIcon } from '@heroicons/react/solid'
 import SelectInput from "~/components/SelectInput";
 import states from "~/utils/database/states.js";
 
-const transformStateOptions = (statesList) => {
-  return statesList.map((state) => {
-    return {
-      label: state.name,
-      id: state.code,
-    };
-  });
+export const meta = () => {
+  return {
+    title: "RoadTrip.FM | Manual Search"
+  };
 };
-
-const transformCityOptions = (citiesList) => {
-  return citiesList.map((city) => {
-    const searchParamString = `?latitude=${encodeURIComponent(city.latitude)}&longitude=${encodeURIComponent(city.longitude)}`
-    return {
-      label: city.name,
-      id: searchParamString,
-    };
-  });
-}
 
 export const loader = async ({ request }) => {
   const stateOptions = transformStateOptions(states)
@@ -49,6 +36,25 @@ export const loader = async ({ request }) => {
 
   return { states: stateOptions };
 };
+
+const transformStateOptions = (statesList) => {
+  return statesList.map((state) => {
+    return {
+      label: state.name,
+      id: state.code,
+    };
+  });
+};
+
+const transformCityOptions = (citiesList) => {
+  return citiesList.map((city) => {
+    const searchParamString = `?latitude=${encodeURIComponent(city.latitude)}&longitude=${encodeURIComponent(city.longitude)}`
+    return {
+      label: city.name,
+      id: searchParamString,
+    };
+  });
+}
 
 export default function ManualSearchPage() {
   const data = useLoaderData();
