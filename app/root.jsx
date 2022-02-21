@@ -17,7 +17,7 @@ export function meta() {
   const description = "A site that helps you find nearby radio stations. Perfect for your next road trip!"
   const title = "RoadTrip.FM -  Quickly & Easily Find Nearby Radio Stations"
   const url = "https://www.roadtripfm.live"
-  const imageUrl = "https://raw.githubusercontent.com/Cool-Runningz/roadtrip-fm/3f637aec8ba060d9ca1ec52e048e70c2b7380b97/app/images/Logo-Blue.svg"
+  const imageUrl = "https://raw.githubusercontent.com/Cool-Runningz/roadtrip-fm/main/app/images/roadtrip-fm-headline.jpeg"
   return {
     title,
     description,
