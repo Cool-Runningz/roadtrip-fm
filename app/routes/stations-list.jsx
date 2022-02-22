@@ -9,12 +9,6 @@ export const meta = () => {
     };
 };
 
-export const ErrorBoundary = () => {
-    return (
-        <Alert />
-    )
-}
-
 //Group the list of stations by their mileage radius
 const groupStationsByMileageRadius = (stationsList) => {
     return stationsList.reduce((acc, currentValue) => {
@@ -95,5 +89,11 @@ export default function StationsList() {
             </div>
 
         </div>
+    )
+}
+
+export const ErrorBoundary = () => {
+    return (
+        <Alert />
     )
 }

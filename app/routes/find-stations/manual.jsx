@@ -13,12 +13,6 @@ export const meta = () => {
   };
 };
 
-export const ErrorBoundary = () => {
-  return (
-    <Alert />
-  )
-}
-
 export const loader = async ({ request }) => {
   const stateOptions = transformStateOptions(states)
   const url = new URL(request.url);
@@ -123,4 +117,10 @@ export default function ManualSearchPage() {
       }
     </div>
   );
+}
+
+export const ErrorBoundary = () => {
+  return (
+    <Alert />
+  )
 }
