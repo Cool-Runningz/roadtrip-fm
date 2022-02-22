@@ -52,7 +52,7 @@ export function CatchBoundary() {
                 <h1 className="mt-2 text-4xl font-extrabold text-gray-900 tracking-tight sm:text-5xl">{caught.statusText}</h1>
                 <p className="mt-2 text-base text-gray-500">Sorry, we couldn't find the page you're looking for.</p>
                 <div className="mt-6">
-                  <a href="/" className="text-base font-medium text-indigo-600 hover:text-indigo-500">
+                  <a href="/" className="text-base font-medium text-indigo-600 hover:text-indigo-500 hover:underline">
                     Go back home
                   </a>
                 </div>

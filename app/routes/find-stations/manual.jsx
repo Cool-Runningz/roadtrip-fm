@@ -4,6 +4,7 @@ import { prisma } from "~/utils/database/db.server";
 import { SearchIcon } from '@heroicons/react/solid'
 
 import SelectInput from "~/components/SelectInput";
+import Alert from "~/components/Alert"
 import states from "~/utils/database/states.js";
 
 export const meta = () => {
@@ -11,6 +12,12 @@ export const meta = () => {
     title: "RoadTrip.FM | Manual Search"
   };
 };
+
+export const ErrorBoundary = () => {
+  return (
+    <Alert />
+  )
+}
 
 export const loader = async ({ request }) => {
   const stateOptions = transformStateOptions(states)

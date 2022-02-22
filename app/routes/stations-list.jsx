@@ -1,12 +1,19 @@
 import { useLoaderData } from "remix";
 import { prisma } from "~/utils/database/db.server";
 import { AdjustmentsIcon } from '@heroicons/react/solid'
+import Alert from "~/components/Alert"
 
 export const meta = () => {
     return {
         title: "RoadTrip.FM | Stations List"
     };
 };
+
+export const ErrorBoundary = () => {
+    return (
+        <Alert />
+    )
+}
 
 //Group the list of stations by their mileage radius
 const groupStationsByMileageRadius = (stationsList) => {
@@ -70,17 +77,14 @@ export default function StationsList() {
                         <ul role="list" className="relative z-0 divide-y divide-gray-200">
                             {stationsData[mileage].map((station) => (
                                 <li key={station.call_sign} className="bg-white">
-                                    <div className="relative px-6 py-5 flex items-center space-x-3 hover:bg-gray-50 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500">
+                                    <div className="relative px-6 py-5 flex items-center space-x-3 hover:bg-gray-100 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500">
                                         <span className="inline-flex items-center px-2.5 py-0.5 rounded-md text-sm font-medium bg-indigo-100 text-indigo-800">
                                             {station.frequency}
                                         </span>
                                         <div className="flex-1 min-w-0">
-                                            <a href="#" className="focus:outline-none">
-                                                {/* Extend touch target to entire panel */}
-                                                <span className="absolute inset-0" aria-hidden="true" />
-                                                <p className="text-sm font-medium text-gray-900">{station.genre}</p>
-                                                <p className="text-sm text-gray-500 truncate"> {station.call_sign} | {station.city}, {station.state_code}</p>
-                                            </a>
+                                            <span className="absolute inset-0" aria-hidden="true" />
+                                            <p className="text-sm font-medium text-gray-900">{station.genre}</p>
+                                            <p className="text-sm text-gray-500 truncate"> {station.call_sign} | {station.city}, {station.state_code}</p>
                                         </div>
                                     </div>
                                 </li>

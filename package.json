@@ -1,7 +1,7 @@
 {
   "private": true,
-  "name": "Roadtrip.FM",
-  "description": "",
+  "name": "roadtrip-fm",
+  "description": "A site that helps you find nearby radio stations. Perfect for your next road trip!",
   "license": "",
   "scripts": {
     "build": "npm run build:css && remix build",
