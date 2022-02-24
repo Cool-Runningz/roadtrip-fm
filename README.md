@@ -23,7 +23,10 @@
 When you begin your search you will be prompted with two potential paths that you can take:
 
 1. **Manual Search** - This option allows you to narrow down your location by manually selecting the city and state that the user is currently driving through.
-2. **GPS Search** - This path leverages the browsers native [Geolocation API](https://developer.mozilla.org/en-US/docs/Web/API/Geolocation_API) in order to retrieve the user’s latitude & longitude. When the user’s coordinates have been identified, a map will be shown with a marker indicating their location.
+2. **GPS Search** - This path leverages the browsers native [Geolocation API](https://developer.mozilla.org/en-US/docs/Web/API/Geolocation_API) in order to retrieve the user’s latitude & longitude. When the user’s coordinates have been identified, a map will be shown with a marker
+   indicating their location.
+
+<img src="public/roadtrip-fm-demo.gif" height="auto" width="800px"  margin="20px">
 
 ## Built With 🛠️
 

@@ -73,7 +73,7 @@ export default function GPSSearchPage() {
 
     /** Intentionally, handling the navigation with an imperative approach since there
      *  may be a chance that I want to disable the button instead of hiding it by default.
-     *  Since this is not possible (at least in an accessible way) with native <a> tags 
+     *  Since disabling is not possible (at least in an accessible way) with native <a> tags 
      *  having things setup this way makes things easier for potential refactor work.
      */
     const handleClick = () => {
