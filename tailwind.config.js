@@ -15,9 +15,6 @@ module.exports = {
           },
         },
       },
-      height: {
-        screen80: "80vh",
-      },
     },
   },
   plugins: [require("@tailwindcss/typography")],
