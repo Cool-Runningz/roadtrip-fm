@@ -62,7 +62,7 @@ export default function StationsList() {
     return (
         <div className="flex flex-col items-center">
             <h2>Radio Stations within a ~50 mile radius </h2>
-            <div className="h-[80vh] overflow-y-auto w-80 md:w-96">
+            <div className="h-[80vh] overflow-y-auto w-80 md:w-96" tabIndex="0">
                 {Object.keys(stationsData).map((mileage) => (
                     <div key={mileage} className="relative">
                         <div className="z-10 sticky top-0 bg-sky-900 px-6 py-3 text-sm font-medium text-white">
