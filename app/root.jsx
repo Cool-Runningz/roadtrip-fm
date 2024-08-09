@@ -31,7 +31,8 @@ export function meta() {
     "twitter:url": url,
     "twitter:title": title,
     "twitter:description": description,
-    "twitter:image": imageUrl
+    "twitter:image": imageUrl,
+    "google-site-verification": "tyfi89nHwl2gV1G_dsYk9rMNDrbdxkTHCWY43m6QfEE"
   };
 }
 
